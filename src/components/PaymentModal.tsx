@@ -3,6 +3,7 @@ import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { X, CreditCard, DollarSign } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 interface PaymentOption {
   id: string;
@@ -17,12 +18,14 @@ interface PaymentModalProps {
 }
 
 const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
+  
   const paymentOptions: PaymentOption[] = [
     { 
       id: 'card', 
       name: 'Credit / Debit Card', 
       icon: <CreditCard className="h-6 w-6" />, 
-      color: 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700' 
+      color: 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
     },
     { 
       id: 'hela', 
@@ -58,16 +61,22 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
 
   const handlePaymentSelect = (paymentId: string) => {
     console.log(`Selected payment method: ${paymentId}`);
-    // In a real app, you would redirect to the payment processor or show a form
-    alert(`Payment with ${paymentId} would be processed here.`);
+    // In a real app, you would process payment here
+    
+    // Close the modal
     onClose();
+    
+    // Navigate to the thank you page after a short delay (simulating processing)
+    setTimeout(() => {
+      navigate('/thank-you');
+    }, 500);
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md border-0">
         <DialogHeader>
-          <DialogTitle className="text-center text-2xl">Choose Payment Method</DialogTitle>
+          <DialogTitle className="text-center text-2xl font-bold text-gray-800">Choose Payment Method</DialogTitle>
           <DialogDescription className="text-center">
             Select how you'd like to make your donation
           </DialogDescription>
@@ -86,7 +95,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
               onClick={() => handlePaymentSelect(option.id)}
               className={cn(
                 "flex items-center space-x-3 px-4 py-3 rounded-lg text-white font-medium",
-                "transform transition-all duration-200 hover:scale-105",
+                "transform transition-all duration-200 hover:scale-105 shadow-md",
                 option.color
               )}
             >
@@ -94,6 +103,10 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
               <span>{option.name}</span>
             </button>
           ))}
+        </div>
+        
+        <div className="mt-6 text-center text-sm text-gray-500">
+          <p>All payment methods are secure and encrypted</p>
         </div>
       </DialogContent>
     </Dialog>

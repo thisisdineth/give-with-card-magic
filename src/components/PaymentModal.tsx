@@ -28,12 +28,6 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
       color: 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
     },
     { 
-      id: 'hela', 
-      name: 'Hela Pay', 
-      icon: <DollarSign className="h-6 w-6" />, 
-      color: 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700' 
-    },
-    { 
       id: 'mastercard', 
       name: 'Master', 
       icon: <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white text-[#EB001B] text-xs">M</div>, 
@@ -46,16 +40,16 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
       color: 'bg-gradient-to-r from-[#1434CB] to-[#0C2A91] hover:from-[#0F2A9E] hover:to-[#0A2278]' 
     },
     { 
-      id: 'ipay', 
-      name: 'iPay', 
-      icon: <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white text-purple-600 text-xs">iP</div>, 
-      color: 'bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700' 
-    },
-    { 
       id: 'frimij', 
       name: 'Frimij', 
       icon: <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white text-orange-600 text-xs">F</div>, 
       color: 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700' 
+    },
+    { 
+      id: 'payhere', 
+      name: 'PayHere', 
+      icon: <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white text-green-600 text-xs">P</div>, 
+      color: 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700' 
     },
   ];
 
